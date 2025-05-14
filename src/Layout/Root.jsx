@@ -5,12 +5,20 @@ const Root = () => {
     return (
         <div>
             <header>
+                <div className='max-w-[1320px] mx-auto'>
 
+                </div>
             </header>
             <main>
-                <Outlet></Outlet>
+                <div className='max-w-[1320px] mx-auto'>
+                    <Outlet></Outlet>
+                </div>
             </main>
-            <footer></footer>
+            <footer>
+                <div className='max-w-[1320px] mx-auto'>
+                    
+                </div>
+            </footer>
         </div>
     );
 };
