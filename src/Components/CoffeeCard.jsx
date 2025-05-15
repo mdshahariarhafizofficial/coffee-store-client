@@ -44,6 +44,7 @@ const CoffeeCard = ({coffee}) => {
 
     }
 
+
     return (
         <div>
             <div className="h-[300px] card flex flex-row items-center justify-between bg-[#F5F4F1] shadow-sm py-8 px-5 md:px-8">
@@ -66,9 +67,11 @@ const CoffeeCard = ({coffee}) => {
                                     <FaEye size={20} color='white'></FaEye>
                                 </button>
                             </Link>
-                            <button className="btn rounded-sm bg-black join-item">
-                                <IoPencil size={20} color='white'></IoPencil>
-                            </button>
+                            <Link to={`/update-coffee/${_id}`}>
+                                <button className="btn rounded-sm bg-black join-item">
+                                    <IoPencil size={20} color='white'></IoPencil>
+                                </button>
+                            </Link>
                             <button onClick={() => handleDelete(_id)} className="btn rounded-sm bg-red-500 join-item">
                                 <MdDeleteForever size={20} color='white'></MdDeleteForever>
                             </button>
