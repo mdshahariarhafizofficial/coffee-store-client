@@ -1,22 +1,32 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
 
     const handleAddCoffee = (e) => {
         e.preventDefault();
         const form = e.target;
-        const coffeeName = form.coffeeName.value;
-        const chef = form.chef.value;
-        const supplier = form.supplier.value;
-        const taste = form.taste.value;
-        const category = form.category.value;
-        const details = form.details.value;
-        const photoUrl = form.photo.value;
-
-        const newCoffee = { coffeeName, chef, supplier, taste, category, details, photoUrl }
-
+        const formData = new FormData(form);
+        const newCoffee = Object.fromEntries(formData.entries())
         console.log(newCoffee);
         
+        // Add Coffee on DB
+        fetch('http://localhost:3000/coffees', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newCoffee)
+        })
+        .then( res => res.json() )
+        .then( data => {
+            console.log("After Added DB : ", data);
+            Swal.fire({
+            title: "Coffee Added!",
+            icon: "success",
+            draggable: true
+            });
+        } )        
     }
 
     return (
@@ -50,8 +60,8 @@ const AddCoffee = () => {
                         </fieldset>
 
                         <fieldset className="fieldset">
-                        <label className="label text-xl font-semibold">Taste</label>
-                        <input type="text" name='taste' className="input w-full border-0 focus:outline-0 focus:shadow-lg focus:shadow-[#D2B48C60]" placeholder="Enter coffee taste" />
+                        <label className="label text-xl font-semibold">Price</label>
+                        <input type="text" name='price' className="input w-full border-0 focus:outline-0 focus:shadow-lg focus:shadow-[#D2B48C60]" placeholder="Enter coffee Price" />
                         </fieldset>
 
                         <fieldset className="fieldset">
