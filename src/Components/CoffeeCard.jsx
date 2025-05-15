@@ -2,6 +2,7 @@ import React from 'react';
 import { FaEye, FaPen } from 'react-icons/fa';
 import { IoPencil } from 'react-icons/io5';
 import { MdDelete, MdDeleteForever } from 'react-icons/md';
+import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const CoffeeCard = ({coffee}) => {
@@ -60,9 +61,11 @@ const CoffeeCard = ({coffee}) => {
                 </div>
                     <div className="card-actions justify-end">
                         <div className="join join-vertical lg:join-horizontal lg:space-x-4 space-y-4">
-                            <button className="btn rounded-sm join-item bg-[#dda760]">
-                                <FaEye size={20} color='white'></FaEye>
-                            </button>
+                            <Link to={`/coffee-details/${_id}`}>
+                                <button className="btn rounded-sm join-item bg-[#dda760]">
+                                    <FaEye size={20} color='white'></FaEye>
+                                </button>
+                            </Link>
                             <button className="btn rounded-sm bg-black join-item">
                                 <IoPencil size={20} color='white'></IoPencil>
                             </button>

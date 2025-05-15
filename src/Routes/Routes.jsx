@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router';
 import Root from '../Layout/Root';
 import Home from '../Pages/Home';
 import AddCoffee from '../Pages/AddCoffee';
+import CoffeeDetails from '../Components/CoffeeDetails';
 
 const router = createBrowserRouter([{
     path: "/",
@@ -17,7 +18,13 @@ const router = createBrowserRouter([{
         {
             path: 'add-coffee',
             Component: AddCoffee
-        }
+        },
+        {
+            path: 'coffee-details/:id',
+            loader: ({params}) => fetch(`http://localhost:3000/coffees/${params.id}`),
+            Component: CoffeeDetails,
+            hydrateFallbackElement: <p>Loading........</p>
+        },
     ]
 }])
 
