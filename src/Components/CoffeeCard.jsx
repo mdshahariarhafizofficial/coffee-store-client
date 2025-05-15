@@ -5,12 +5,12 @@ import { MdDelete, MdDeleteForever } from 'react-icons/md';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
-const CoffeeCard = ({coffee}) => {
+const CoffeeCard = ({coffee, coffees, setCoffees}) => {
+    
     const { _id, photo, price, coffeeName, chef } = coffee;
     
     // Delete
     const handleDelete = (id) => {
-        console.log(id);
 
         Swal.fire({
         title: "Are you sure?",
@@ -36,6 +36,9 @@ const CoffeeCard = ({coffee}) => {
                         text: "Your Coffee has been deleted.",
                         icon: "success"
                         });
+                        const remainingCoffees = coffees.filter( (cof) => cof._id !== id );
+                        console.log(remainingCoffees);
+                        setCoffees(remainingCoffees);
                 }
             })
 
