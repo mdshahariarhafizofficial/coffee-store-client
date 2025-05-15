@@ -23,13 +23,21 @@ const CoffeeCard = ({coffee}) => {
             console.log(result.isConfirmed);
         if (result.isConfirmed) {
             // Delete
-            
+            fetch(`http://localhost:3000/coffees/${id}`, {
+                method: "DELETE"
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log("After delete :",data);
+                if (data.deletedCount) {
+                        Swal.fire({
+                        title: "Deleted!",
+                        text: "Your Coffee has been deleted.",
+                        icon: "success"
+                        });
+                }
+            })
 
-            // Swal.fire({
-            // title: "Deleted!",
-            // text: "Your file has been deleted.",
-            // icon: "success"
-            // });
         }
         });
 
