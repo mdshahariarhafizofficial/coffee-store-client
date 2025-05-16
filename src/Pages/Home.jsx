@@ -9,6 +9,7 @@ const Home = () => {
         <div>
           <Link to="/add-coffee">Add Coffee</Link>
           <h1>Home Page</h1>
+          <Link to="/sing-up">Sing Up</Link>
           <Coffees data = {data}></Coffees>  
         </div>
     );
