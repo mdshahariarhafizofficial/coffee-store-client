@@ -7,6 +7,7 @@ import CoffeeDetails from '../Components/CoffeeDetails';
 import UpdateCoffee from '../Components/UpdateCoffee';
 import SingUp from '../Pages/SingUp/SingUp';
 import Users from '../Pages/Users';
+import SingIn from '../Pages/SingIn/Singin';
 
 const router = createBrowserRouter([{
     path: "/",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([{
             Component: Users,
             loader: () => fetch('http://localhost:3000/users'),
             hydrateFallbackElement: <p>Loading........</p>
+        },
+        {
+            path: 'singIn',
+            Component: SingIn,
         }
     ]
 }])

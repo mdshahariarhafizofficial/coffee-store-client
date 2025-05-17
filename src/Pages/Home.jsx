@@ -7,8 +7,9 @@ const Home = () => {
   
     return (
         <div>
-          <Link to="/add-coffee">Add Coffee</Link>
-          <Link to="/users">Users</Link>
+          <Link to="/add-coffee">Add Coffee</Link><br />
+          <Link to="/users">Users</Link><br />
+          <Link to="/singin">Sing In</Link>
           <h1>Home Page</h1>
           <Link to="/sing-up">Sing Up</Link>
           <Coffees data = {data}></Coffees>  
