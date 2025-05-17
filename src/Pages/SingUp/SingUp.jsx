@@ -11,8 +11,8 @@ const SingUp = () => {
         const form = e.target;
         const formData = new FormData(form);
         const email = formData.get('email');
-        const password = formData.get('password');
-        console.log(email, password);
+        const {password, ...userProfile} = Object.fromEntries(formData.entries());
+        console.log(userProfile);
         
         // Create User
         createUser(email, password)
@@ -54,17 +54,39 @@ const SingUp = () => {
                 <form onSubmit={handleCreateUser}
                 className="space-y-8">
                     <div className="space-y-4">
+
+                        {/* Name */}
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="block text-sm">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        </div>
+                        {/* Address */}
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="block text-sm">Address</label>
+                            <input type="text" name="address" id="address" placeholder="Address" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        </div>
+                        {/* Phone */}
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="block text-sm">Phone Number</label>
+                            <input type="text" name="number" id="number" placeholder="Number" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        </div>
+                        {/* Photo Url */}
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="block text-sm">Photo URL</label>
+                            <input type="txt" name="photo" id="photo" placeholder="Url" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        </div>
+                        {/* Email */}
                         <div className="space-y-2">
                             <label htmlFor="email" className="block text-sm">Email address</label>
-                            {/* Email */}
                             <input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         </div>
+
+                        {/* Password */}
                         <div className="space-y-2">
                             <div className="flex justify-between">
                                 <label htmlFor="password" className="text-sm">Password</label>
 
                             </div>
-                            {/* Password */}
                             <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         </div>
                     </div>
