@@ -11,14 +11,20 @@ const SingUp = () => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const email = formData.get('email');
-        const {password, ...userProfile} = Object.fromEntries(formData.entries());
+
+        const {email, password, ...userFormData} = Object.fromEntries(formData.entries());
         // console.log(userProfile);
         
         // Create User
         createUser(email, password)
         .then( (result) => {
             console.log(result);
+            const userProfile = {
+                email,
+                ...userFormData,
+                creationTime: result.user?.metadata?.creationTime,
+                lastSingInTime: result.user?.metadata?.lastSingInTime,
+            }
             fetch('http://localhost:3000/users',{
                 method: "POST",
                 headers: {
