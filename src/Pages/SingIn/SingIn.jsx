@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../Context/AuthContext';
 
 const SingIn = () => {
-
+    const {singInUser} = useContext(AuthContext);
     const handleSingIn = (e) => {
         e.preventDefault();
 
@@ -10,13 +11,39 @@ const SingIn = () => {
         const email = formData.get('email');
         const password = formData.get('password');
         
+        // SingIn
+        singInUser(email, password)
+        .then( (result) => {
+            console.log(result);
+            const singInInfo = {
+                email,
+                lastSignInTime: result.user.metadata.lastSignInTime,
+            }
 
+            // Send Data to DB
+            fetch('http://localhost:3000/users', {
+                method: "PATCh",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(singInInfo)
+            })
+            .then( res => res.json() )
+            .then( data => {
+                console.log("After Update: ", data);
+            } )
+
+        } )
+        .catch( (error) => {
+            console.log(error);
+            
+        } )
     }
 
     return (
         <div className='flex items-center justify-center mt-10'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800" bis_skin_checked="1">
-                <h1 className="text-2xl font-bold text-center">Login</h1>
+                <h1 className="text-4xl font-bold text-center">Sing In</h1>
                 <form onSubmit={handleSingIn} 
                 className="space-y-6">
                     <div className="space-y-1 text-sm" bis_skin_checked="1">
@@ -55,7 +82,7 @@ const SingIn = () => {
                     </button>
                 </div>
                 <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don't have an account?
-                    <a rel="noopener noreferrer" href="#" className="underline dark:text-gray-800">Sign up</a>
+                    <a rel="noopener noreferrer" href="/sing-up" className="underline dark:text-gray-800">Sign up</a>
                 </p>
             </div>
         </div>
