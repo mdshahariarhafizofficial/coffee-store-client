@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AuthContext from '../../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const SingUp = () => {
 
@@ -12,16 +13,42 @@ const SingUp = () => {
         const formData = new FormData(form);
         const email = formData.get('email');
         const {password, ...userProfile} = Object.fromEntries(formData.entries());
-        console.log(userProfile);
+        // console.log(userProfile);
         
         // Create User
         createUser(email, password)
         .then( (result) => {
             console.log(result);
-            
+            fetch('http://localhost:3000/users',{
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userProfile)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log("After Create User : ", data);
+                if (data.insertedId) {
+                    Swal.fire({
+                    // position: "top-end",
+                    icon: "success",
+                    title: "Account Created Successful!",
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+                }
+            })
         } )
         .catch( (error) => {
             console.log(error);
+                    Swal.fire({
+                    // position: "top-end",
+                    icon: "error",
+                    title: `${error.message}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
         } )
     }
 
