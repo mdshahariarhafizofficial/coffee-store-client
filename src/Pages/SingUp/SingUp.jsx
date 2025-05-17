@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../Context/AuthContext';
 
 const SingUp = () => {
+
+    const {createUser} = useContext(AuthContext);
 
     // handle create user
     const handleCreateUser = (e) => {
@@ -9,7 +12,17 @@ const SingUp = () => {
         const formData = new FormData(form);
         const email = formData.get('email');
         const password = formData.get('password');
-        console.log(email, password); 
+        console.log(email, password);
+        
+        // Create User
+        createUser(email, password)
+        .then( (result) => {
+            console.log(result);
+            
+        } )
+        .catch( (error) => {
+            console.log(error);
+        } )
     }
 
     return (
