@@ -18,7 +18,7 @@ const SingUp = () => {
         // Create User
         createUser(email, password)
         .then( (result) => {
-            console.log(result);
+            // console.log(result);
             const userProfile = {
                 email,
                 ...userFormData,
@@ -47,7 +47,7 @@ const SingUp = () => {
             })
         } )
         .catch( (error) => {
-            console.log(error);
+            // console.log(error);
                     Swal.fire({
                     // position: "top-end",
                     icon: "error",

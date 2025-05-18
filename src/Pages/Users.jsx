@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const Users = () => {
     const initialUser = useLoaderData();
     const [users, setUsers] = useState(initialUser);
-    console.log(initialUser);
+    // console.log(initialUser);
     
     const handleDelete = (id) => {
         Swal.fire({

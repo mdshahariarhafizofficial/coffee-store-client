@@ -9,7 +9,7 @@ const AddCoffee = () => {
         const form = e.target;
         const formData = new FormData(form);
         const newCoffee = Object.fromEntries(formData.entries())
-        console.log(newCoffee);
+        // console.log(newCoffee);
         
         // Add Coffee on DB
         fetch('http://localhost:3000/coffees', {

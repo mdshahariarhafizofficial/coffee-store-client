@@ -14,7 +14,7 @@ const SingIn = () => {
         // SingIn
         singInUser(email, password)
         .then( (result) => {
-            console.log(result);
+            // console.log(result);
             const singInInfo = {
                 email,
                 lastSignInTime: result.user.metadata.lastSignInTime,

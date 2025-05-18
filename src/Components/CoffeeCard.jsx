@@ -21,7 +21,7 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-            console.log(result.isConfirmed);
+            // console.log(result.isConfirmed);
         if (result.isConfirmed) {
             // Delete
             fetch(`http://localhost:3000/coffees/${id}`, {
@@ -29,7 +29,7 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log("After delete :",data);
+                // console.log("After delete :",data);
                 if (data.deletedCount) {
                         Swal.fire({
                         title: "Deleted!",
@@ -37,7 +37,7 @@ const CoffeeCard = ({coffee, coffees, setCoffees}) => {
                         icon: "success"
                         });
                         const remainingCoffees = coffees.filter( (cof) => cof._id !== id );
-                        console.log(remainingCoffees);
+                        // console.log(remainingCoffees);
                         setCoffees(remainingCoffees);
                 }
             })

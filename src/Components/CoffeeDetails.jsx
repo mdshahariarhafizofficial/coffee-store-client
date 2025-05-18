@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router';
 
 const CoffeeDetails = () => {
     const coffee = useLoaderData();
-    console.log(coffee);
+    // console.log(coffee);
 
     const { _id, photo, price, coffeeName, chef, supplier, category, details } = coffee;
     
