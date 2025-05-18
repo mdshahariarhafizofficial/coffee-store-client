@@ -25,7 +25,7 @@ const SingUp = () => {
                 creationTime: result.user?.metadata?.creationTime,
                 lastSingInTime: result.user?.metadata?.lastSingInTime,
             }
-            fetch('http://localhost:3000/users',{
+            fetch('https://coffee-store-server-chi-two-26.vercel.app/users',{
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

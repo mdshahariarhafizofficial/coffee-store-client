@@ -21,7 +21,7 @@ const SingIn = () => {
             };
 
             // Send Data to DB
-            fetch('http://localhost:3000/users', {
+            fetch('https://coffee-store-server-chi-two-26.vercel.app/users', {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json"

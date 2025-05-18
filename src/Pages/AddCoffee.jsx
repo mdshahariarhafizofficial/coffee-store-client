@@ -12,7 +12,7 @@ const AddCoffee = () => {
         // console.log(newCoffee);
         
         // Add Coffee on DB
-        fetch('http://localhost:3000/coffees', {
+        fetch('https://coffee-store-server-chi-two-26.vercel.app/coffees', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
