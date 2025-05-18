@@ -18,11 +18,11 @@ const SingIn = () => {
             const singInInfo = {
                 email,
                 lastSignInTime: result.user.metadata.lastSignInTime,
-            }
+            };
 
             // Send Data to DB
             fetch('http://localhost:3000/users', {
-                method: "PATCh",
+                method: "PATCH",
                 headers: {
                     "content-type": "application/json"
                 },
@@ -30,9 +30,11 @@ const SingIn = () => {
             })
             .then( res => res.json() )
             .then( data => {
-                console.log("After Update: ", data);
+                console.log(data);
+                
             } )
 
+    
         } )
         .catch( (error) => {
             console.log(error);
